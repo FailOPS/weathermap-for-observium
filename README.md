@@ -18,3 +18,7 @@ Use is not advised.
 
 5. If you are installing this into Observium then you can use the navbar-custom.inc.php by putting it into /opt/observium/html/includes/.
 MAKE SURE TO CHOWN/CHMOD IT!
+
+6. Fix this file: /usr/share/php/Console/Getopt.php and change PEAR::isError to @PEAR::isError
+
+7. Move overlib.js down one directory (mv overlib.js ..) so it's down in /opt/observium/html/
