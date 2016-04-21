@@ -17,3 +17,4 @@ Use is not advised.
 4. Add line to cron.d/observium: */5 * * * * root cd /opt/observium/html/weathermap/ && ./map-poller.php && ./permFix.sh >> /dev/null 2>&1
 
 5. If you are installing this into Observium then you can use the navbar-custom.inc.php by putting it into /opt/observium/html/includes/.
+MAKE SURE TO CHOWN/CHMOD IT!
