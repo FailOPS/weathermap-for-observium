@@ -1,3 +1,8 @@
+NOTE: My own personal fork. I will be maintaining this version specific to my installation of Observium.
+Current: Observium CE 0.16.1.7533
+Use is not advised.
+
+
 1. Install the Weathermap in the Observium / LibreNMS folder
 
 ```
