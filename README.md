@@ -2,7 +2,7 @@
 
 ```
     cd /opt/observium/html 
-    git clone https://github.com/nicolasvion/weathermap-for-observium.git weathermap
+    git clone https://github.com/basic612/weathermap-for-observium.git weathermap
 ```
 
 2. Edit data-pick.php and make sure the variables at the start are all ok.
@@ -11,14 +11,14 @@
 
 4. Make the configs directory writeable by your web server, either chown apache:apache configs/ or chmod 777 configs (I'd highly advise you choose the first option, replace apache:apache with your web servers user and group.)
 
-5. Point your browser to your install /weathermap/editor.php (i.e http://testurl.org/weathermap/editor.php)
+5. Point your browser to your install /weathermap/editor.php (i.e https://observium/weathermap/editor.php)
 
 6. Create your maps, please note when you create a MAP, please click Map Style, ensure Overlib is selected for HTML Style and click submit.
 
 7. Enable the cron process:
 
 ```
-    */5 * * * * /opt/observium/html/weathermap/weathermap --config=/opt/observium/html/weathermap/configs/config.conf --image-uri=http://testurl.org/weathermap/maps/config.png 2>/dev/null 1>/dev/null
+    * * * * * cd /opt/observium/html/weathermap/ && ./weathermap --config=configs/test.conf >> /dev/null 2>&1
 ```
 
 8. If you are installing this into Observium then you can use the navbar-custom.inc.php by putting it into /opt/observium/html/includes/.
