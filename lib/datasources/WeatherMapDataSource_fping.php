@@ -16,7 +16,7 @@ class WeatherMapDataSource_fping extends WeatherMapDataSource {
 		# 
 		# You may need to change the line below to have something like "/usr/local/bin/fping" or "/usr/bin/fping" instead.
 		#
-		$this->fping_cmd = "/usr/local/sbin/fping";
+		$this->fping_cmd = "/usr/bin/fping";
 	
 		return(TRUE);
 	}
@@ -106,12 +106,14 @@ class WeatherMapDataSource_fping extends WeatherMapDataSource {
 					if($count==0)
 					{
 						wm_warn("FPing ReadData: No lines read. Bad hostname? ($target) [WMFPING03]\n");
+						$item->add_note("state", "down");
 					}
 					else
 					{
 						if($hitcount == 0)
 						{
 							wm_warn("FPing ReadData: $count lines read. But nothing returned for target??? ($target) Try running with DEBUG to see output.  [WMFPING02]\n");
+							$item->add_note("state", "down");
 						}
 						else
 						{
@@ -119,6 +121,14 @@ class WeatherMapDataSource_fping extends WeatherMapDataSource {
 							$data[OUT] = $loss;
 							$item->add_note("fping_min",$min);
 							$item->add_note("fping_max",$max);
+							
+							if($loss > 0) {
+                                                             $item->add_note("state", "down");
+							
+							}
+							else {
+                                                            $item->add_note("state", "up");
+                                                        } 
 						}
 					}
 				}
